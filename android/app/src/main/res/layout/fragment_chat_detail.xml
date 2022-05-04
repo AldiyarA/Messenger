@@ -1,0 +1,313 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ui.ChatDetailFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#f0f0ff"
+        >
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/messagesRV"
+
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintHeight_percent="0.85"
+
+            android:paddingTop="150dp"
+            android:clipToPadding="false"
+
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/new_message_block" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/new_message_block"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#fff">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/send_message_block"
+
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                >
+                <EditText
+                    android:id="@+id/messageContent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+
+                    android:layout_width="0dp"
+                    app:layout_constraintWidth_percent="0.88"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintHeight_max="100dp"
+                    app:layout_constraintHeight_min="50dp"
+
+                    android:background="@android:color/transparent"
+
+                    android:hint="Write a massage..."
+                    android:textSize="20sp"
+                    android:gravity="top"
+                    android:padding="10dp"
+                    />
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/sendMessage"
+                    android:layout_width="0dp"
+                    app:layout_constraintWidth_percent="0.12"
+                    android:layout_height="0dp"
+                    app:layout_constraintDimensionRatio="1:1"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    >
+                    <ImageView
+                        android:layout_width="0dp"
+                        app:layout_constraintWidth_percent="0.6"
+                        android:layout_height="0dp"
+                        app:layout_constraintDimensionRatio="1:1"
+
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+
+                        android:src="@drawable/send"
+                        />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/edit_message_block"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:visibility="gone"
+                >
+                <ImageView
+                    android:layout_width="18dp"
+                    android:layout_height="18dp"
+                    android:src="@drawable/edit"
+
+                    app:layout_constraintStart_toStartOf="@id/oldContent"
+                    app:layout_constraintBottom_toTopOf="@+id/oldContent"
+                    app:layout_constraintEnd_toStartOf="@+id/edit_banner"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:alpha="0.7"
+                    />
+                <TextView
+                    android:id="@+id/edit_banner"
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintStart_toStartOf="@id/oldContent"
+                    app:layout_constraintBottom_toTopOf="@+id/oldContent"
+
+                    android:text="Edit message"
+                    android:layout_marginStart="30dp"
+                    android:textSize="17sp"
+                    android:textColor="#5090ff"
+                    />
+
+                <TextView
+                    android:id="@+id/oldContent"
+
+                    app:layout_constraintBottom_toTopOf="@+id/messageNewContent"
+                    app:layout_constraintStart_toStartOf="parent"
+
+                    android:layout_width="0dp"
+                    app:layout_constraintWidth_percent="0.88"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintHeight_max="100dp"
+                    android:paddingStart="20dp"
+
+                    android:text="This is what this message got before I started to edit it"
+                    android:textSize="20sp"
+                    />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/cancelNewMessage"
+                    android:layout_width="0dp"
+                    app:layout_constraintWidth_percent="0.12"
+                    android:layout_height="0dp"
+                    app:layout_constraintDimensionRatio="1:1"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/oldContent"
+                    app:layout_constraintTop_toTopOf="@+id/oldContent"
+                    >
+                    <ImageView
+                        android:layout_width="0dp"
+                        app:layout_constraintWidth_percent="0.6"
+                        android:layout_height="0dp"
+                        app:layout_constraintDimensionRatio="1:1"
+
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+
+                        android:src="@drawable/cancel"
+                        android:alpha="0.7"
+                        />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <EditText
+                    android:id="@+id/messageNewContent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+
+                    android:layout_width="0dp"
+                    app:layout_constraintWidth_percent="0.88"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintHeight_max="100dp"
+                    app:layout_constraintHeight_min="50dp"
+
+                    android:background="@android:color/transparent"
+
+                    android:hint="New massage..."
+                    android:textSize="20sp"
+                    android:gravity="top"
+                    android:padding="10dp"
+                    />
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/sendNewMessage"
+                    android:layout_width="0dp"
+                    app:layout_constraintWidth_percent="0.12"
+                    android:layout_height="0dp"
+                    app:layout_constraintDimensionRatio="1:1"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    >
+                    <ImageView
+                        android:layout_width="0dp"
+                        app:layout_constraintWidth_percent="0.6"
+                        android:layout_height="0dp"
+                        app:layout_constraintDimensionRatio="1:1"
+
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+
+                        android:src="@drawable/send"
+                        />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/ChatNameBlock"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintHeight_percent="0.068"
+            android:background="#1752C8"
+            >
+            <ImageView
+                android:id="@+id/returnBtn"
+
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                app:layout_constraintDimensionRatio="1:1"
+
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+
+                android:src="@drawable/back"
+                />
+            <TextView
+                android:id="@+id/chatName"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/returnBtn"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+
+                android:layout_width="0dp"
+                app:layout_constraintWidth_percent="0.88"
+                android:layout_height="wrap_content"
+
+                android:text="Chat"
+                android:textSize="30sp"
+                android:background="@android:color/transparent"
+                android:paddingStart="10dp"
+                android:paddingEnd="0dp"
+                android:textColor="#000000"
+                />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/resendChatsBlock"
+            android:visibility="gone"
+            app:layout_constraintTop_toBottomOf="@+id/ChatNameBlock"
+
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintHeight_percent="0.922"
+
+            android:padding="50dp"
+            android:background="#50000000"
+            >
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#ffffff"
+                >
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/chooseChatBlock"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintHeight_percent="0.08"
+                    >
+                    <TextView
+                        android:layout_width="0dp"
+                        app:layout_constraintWidth_percent="0.8"
+                        android:layout_height="match_parent"
+                        android:gravity="center_vertical"
+                        android:text="Choose chat to send message"
+                        app:layout_constraintStart_toStartOf="parent"
+                        android:paddingStart="10dp"
+                        android:textSize="17sp"
+                        android:background="#3772E8"
+                        android:textColor="#000000"
+                        />
+                    <TextView
+                        android:id="@+id/cancelResend"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        android:layout_width="0dp"
+                        app:layout_constraintWidth_percent="0.2"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:text="Cancel"
+                        android:textStyle="bold"
+                        android:textColor="#3772E8"
+                        />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/resendChatsRV"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    app:layout_constraintHeight_percent="0.92"
+                    app:layout_constraintTop_toBottomOf="@+id/chooseChatBlock"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</FrameLayout>

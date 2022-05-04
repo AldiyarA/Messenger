@@ -1,0 +1,419 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ui.LoginFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/banners"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/user_fields"
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:animateLayoutChanges="true"
+            >
+            <TextView
+                android:id="@+id/login_banner"
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+
+                android:text="@string/login"
+                android:textSize="40sp"
+                android:textColor="#000000"
+                android:textStyle="bold"
+                />
+            <TextView
+                android:id="@+id/signup_banner"
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+
+                android:text="@string/sign_up"
+                android:textSize="40sp"
+                android:textColor="#000000"
+                android:textStyle="bold"
+
+                android:visibility="gone"
+                />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/user_fields"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            app:layout_constraintTop_toBottomOf="@+id/banners"
+            app:layout_constraintBottom_toTopOf="@id/profile_fields"
+            android:animateLayoutChanges="true"
+            >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toTopOf="@id/email_input"
+                app:layout_constraintLeft_toLeftOf="@+id/email_input"
+
+                android:text="Email"
+                />
+
+            <ImageView
+                app:layout_constraintLeft_toLeftOf="@+id/email_input"
+                app:layout_constraintTop_toTopOf="@id/email_input"
+                app:layout_constraintBottom_toBottomOf="@id/email_input"
+
+                android:layout_width="30dp"
+                android:layout_height="35dp"
+                android:layout_marginStart="3dp"
+                android:src="@drawable/email"
+                android:alpha="0.45"
+                />
+
+            <EditText
+                android:id="@+id/email_input"
+
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintBottom_toTopOf="@+id/password_input"
+
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:paddingStart="35dp"
+                android:paddingBottom="10dp"
+
+                android:hint="Type your email"
+                tools:ignore="RtlSymmetry" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toTopOf="@id/password_input"
+                app:layout_constraintLeft_toLeftOf="@+id/password_input"
+
+                android:text="Password"
+                />
+
+            <ImageView
+                app:layout_constraintLeft_toLeftOf="@+id/password_input"
+                app:layout_constraintTop_toTopOf="@id/password_input"
+                app:layout_constraintBottom_toBottomOf="@id/password_input"
+
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginStart="7dp"
+                android:src="@drawable/lock"
+                android:alpha="0.35"
+                />
+
+            <EditText
+                android:id="@+id/password_input"
+                android:inputType="textPassword"
+
+                app:layout_constraintTop_toBottomOf="@+id/email_input"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:paddingStart="35dp"
+                android:paddingBottom="10dp"
+
+                android:hint="Type your password"
+                tools:ignore="RtlSymmetry" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/profile_fields"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/user_fields"
+            app:layout_constraintBottom_toTopOf="@+id/send_buttons"
+            android:visibility="gone"
+            android:animateLayoutChanges="true"
+            >
+
+            <ImageView
+                app:layout_constraintLeft_toLeftOf="@+id/first_name_input"
+                app:layout_constraintTop_toTopOf="@id/first_name_input"
+                app:layout_constraintBottom_toBottomOf="@id/first_name_input"
+
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_marginStart="5dp"
+                android:src="@drawable/first_name_icon"
+                android:alpha="0.5"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toTopOf="@id/first_name_input"
+                app:layout_constraintLeft_toLeftOf="@+id/first_name_input"
+
+                android:text="First name"
+                />
+
+            <EditText
+                android:id="@+id/first_name_input"
+
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toTopOf="@+id/last_name_input"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:paddingStart="35dp"
+                android:paddingBottom="10dp"
+
+                android:hint="Type your first name"
+                tools:ignore="RtlSymmetry" />
+
+
+            <ImageView
+                app:layout_constraintLeft_toLeftOf="@+id/last_name_input"
+                app:layout_constraintTop_toTopOf="@id/last_name_input"
+                app:layout_constraintBottom_toBottomOf="@id/last_name_input"
+
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_marginStart="5dp"
+                android:src="@drawable/last_name_icon"
+                android:alpha="0.5"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toTopOf="@id/last_name_input"
+                app:layout_constraintLeft_toLeftOf="@+id/last_name_input"
+
+                android:text="Last name"
+                />
+
+            <EditText
+                android:id="@+id/last_name_input"
+
+                app:layout_constraintTop_toBottomOf="@+id/first_name_input"
+                app:layout_constraintBottom_toTopOf="@id/bio_input"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:paddingStart="35dp"
+                android:paddingBottom="10dp"
+
+                android:hint="Type your last name"
+                tools:ignore="RtlSymmetry" />
+
+
+            <ImageView
+                app:layout_constraintLeft_toLeftOf="@+id/bio_input"
+                app:layout_constraintTop_toTopOf="@id/bio_input"
+                app:layout_constraintBottom_toBottomOf="@id/bio_input"
+
+                android:layout_width="23dp"
+                android:layout_height="23dp"
+                android:layout_marginStart="5dp"
+                android:src="@drawable/user"
+                android:alpha="0.35"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toTopOf="@id/bio_input"
+                app:layout_constraintLeft_toLeftOf="@+id/bio_input"
+
+                android:text="Bio"
+                />
+
+
+            <EditText
+                android:id="@+id/bio_input"
+
+                app:layout_constraintTop_toBottomOf="@+id/last_name_input"
+                app:layout_constraintBottom_toTopOf="@id/phone_input"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:paddingStart="35dp"
+                android:paddingBottom="10dp"
+
+                android:hint="Type your bio"
+                tools:ignore="RtlSymmetry" />
+
+            <ImageView
+                app:layout_constraintLeft_toLeftOf="@+id/phone_input"
+                app:layout_constraintTop_toTopOf="@id/phone_input"
+                app:layout_constraintBottom_toBottomOf="@id/phone_input"
+
+                android:layout_width="23dp"
+                android:layout_height="23dp"
+                android:layout_marginStart="5dp"
+                android:src="@drawable/phone"
+                android:alpha="0.35"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toTopOf="@id/phone_input"
+                app:layout_constraintLeft_toLeftOf="@+id/phone_input"
+
+                android:text="Phone"
+                />
+
+            <EditText
+                android:id="@+id/phone_input"
+
+                app:layout_constraintTop_toBottomOf="@+id/bio_input"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:paddingStart="35dp"
+                android:paddingBottom="10dp"
+
+                android:hint="Type your phone number"
+                tools:ignore="RtlSymmetry" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/send_buttons"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            app:layout_constraintTop_toBottomOf="@id/profile_fields"
+            app:layout_constraintBottom_toTopOf="@+id/other_way"
+            android:animateLayoutChanges="true"
+            >
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/login_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@android:color/holo_blue_dark"
+                android:textColor="@color/white"
+                android:text="@string/login"
+                style="@style/TextAppearance.AppCompat.Medium"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/signup_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@android:color/holo_blue_dark"
+                android:textColor="@color/white"
+                android:text="@string/sign_up"
+                style="@style/TextAppearance.AppCompat.Medium"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:visibility="gone"
+                />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/other_way"
+
+            app:layout_constraintTop_toBottomOf="@+id/send_buttons"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:animateLayoutChanges="true"
+            >
+
+            <TextView
+                android:id="@+id/signup_container"
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toTopOf="@+id/or_buttons"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+
+                android:text="Or using"
+                />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/or_buttons"
+                app:layout_constraintTop_toBottomOf="@id/signup_container"
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/to_signup_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@android:color/transparent"
+                    android:textColor="@android:color/holo_blue_dark"
+                    android:text="@string/sign_up"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/to_login_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@android:color/transparent"
+                    android:textColor="@android:color/holo_blue_dark"
+                    android:text="@string/login"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    android:visibility="gone"
+                    />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</FrameLayout>

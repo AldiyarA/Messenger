@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/loginFragment">
+
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.example.android.ui.LoginFragment"
+        android:label="fragment_login"
+        tools:layout="@layout/fragment_login">
+        <action
+            android:id="@+id/action_login_to_chat"
+            app:destination="@+id/chatListFragment"
+            />
+    </fragment>
+    <fragment
+        android:id="@+id/chatListFragment"
+        android:name="com.example.android.ui.ChatListFragment"
+        android:label="fragment_chat_list"
+        tools:layout="@layout/fragment_chat_list"
+        >
+        <action
+            android:id="@+id/loginAction"
+            app:destination="@+id/action_chat_to_login"
+            />
+        <action
+            android:id="@+id/action_chat_to_detail"
+            app:destination="@+id/chatDetailFragment"
+            />
+    </fragment>
+    <fragment
+        android:id="@+id/chatDetailFragment"
+        android:name="com.example.android.ui.ChatDetailFragment"
+        android:label="fragment_chat_detail"
+        tools:layout="@layout/fragment_chat_detail"
+        >
+        <argument
+            android:name="chatId"
+            app:argType="integer"
+            />
+    </fragment>
+
+</navigation>

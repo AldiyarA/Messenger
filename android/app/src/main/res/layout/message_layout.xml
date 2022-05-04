@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+
+    android:background="@android:color/transparent"
+    android:padding="4dp"
+    >
+    <TextView
+        android:id="@+id/initials"
+
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+
+        android:layout_width="0dp"
+        app:layout_constraintWidth_percent="0.11"
+        app:layout_constraintDimensionRatio="1:1"
+        android:layout_height="0dp"
+        android:background="@drawable/red_circle_textview"
+
+        android:text="AA"
+        android:gravity="center"
+        android:textColor="@color/white"
+        />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/message_background"
+
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/initials"
+        android:layout_marginStart="5dp"
+        android:background="#eeeeee"
+
+        android:layout_width="0dp"
+        app:layout_constraintWidth_percent="0.6"
+        android:layout_height="wrap_content"
+
+        android:paddingTop="5dp"
+        android:paddingLeft="12dp"
+        android:paddingRight="12dp"
+        android:paddingBottom="5dp">
+
+        <TextView
+            android:id="@+id/sender"
+
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:text="Adelov Aldiyar"
+            android:textColor="#000000"
+            android:textSize="14sp"
+            />
+        <TextView
+            android:id="@+id/owner"
+
+            app:layout_constraintTop_toBottomOf="@+id/sender"
+            app:layout_constraintStart_toStartOf="parent"
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Forwarded from Aldiyar"
+            android:textColor="#0000bb"
+            android:textSize="14sp"
+
+            android:visibility="gone"
+            />
+
+        <TextView
+            android:id="@+id/content"
+
+            app:layout_constraintTop_toBottomOf="@+id/owner"
+            app:layout_constraintStart_toStartOf="@+id/sender"
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="#000"
+            android:textSize="12sp"
+
+            android:text="Тут вы можете увидеть мой дизайн для сообщения, конечно же сообщение которые принадлежат юзеру будут выделятся"
+            />
+
+        <TextView
+            android:id="@+id/time"
+            app:layout_constraintTop_toBottomOf="@+id/content"
+            app:layout_constraintEnd_toEndOf="parent"
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:text="19:00"
+            android:textSize="12sp"
+            />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/message_background"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="@+id/message_background"
+
+        android:layout_width="0dp"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:id="@+id/resend_button"
+
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/edit_button"
+
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+
+            android:src="@drawable/resend"
+            android:alpha="0.7"
+            />
+        <ImageView
+            android:id="@+id/edit_button"
+
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+
+            app:layout_constraintStart_toEndOf="@id/resend_button"
+            app:layout_constraintTop_toTopOf="@+id/resend_button"
+            app:layout_constraintBottom_toBottomOf="@id/resend_button"
+            app:layout_constraintEnd_toStartOf="@+id/delete_button"
+
+            android:src="@drawable/edit"
+            android:alpha="0.7"
+            />
+        <ImageView
+            android:id="@+id/delete_button"
+
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+
+            app:layout_constraintStart_toEndOf="@id/edit_button"
+            app:layout_constraintTop_toTopOf="@+id/edit_button"
+            app:layout_constraintBottom_toBottomOf="@id/edit_button"
+            app:layout_constraintEnd_toEndOf="parent"
+
+            android:src="@drawable/delete"
+            android:alpha="0.7"
+            />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
