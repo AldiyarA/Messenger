@@ -1,12 +1,26 @@
 from __future__ import unicode_literals
 
+import os
+
 from django.db import models
 from django.core.mail import send_mail
 from django.contrib.auth.models import PermissionsMixin
 from django.contrib.auth.base_user import AbstractBaseUser
 from django.utils.translation import gettext_lazy as _
+from django.core.exceptions import ValidationError
 
 from .managers import UserManager
+
+ALLOWED_EXTENSIONS = ['.jpg', '.png']
+
+
+def validate_extension(value):
+    split_ext = os.path.splitext(value.name)
+    if len(split_ext) > 1:
+        ext = split_ext[1]
+        if ext.lower() not in ALLOWED_EXTENSIONS:
+            raise ValidationError(f'not allowed file, valid extensions: {ALLOWED_EXTENSIONS}')
+
 
 
 class User(AbstractBaseUser, PermissionsMixin):
@@ -43,3 +57,4 @@ class Profile(models.Model):
     last_name = models.CharField(max_length=30, blank=True, default="")
     bio = models.CharField(max_length=100, blank=True, default="")
     phone = models.CharField(max_length=50, blank=True, default="")
+    image = models.ImageField(blank=True, null=True, upload_to='images/', validators=[validate_extension, ])

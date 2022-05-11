@@ -7,46 +7,53 @@ from django.contrib.auth.models import AnonymousUser
 # Локальные импорты.
 from core.models import Message, MessageType, UserChat
 from core.serializers import MessageSerializer, MessageResponseSerializer
+import logging
+
+logger = logging.getLogger(__name__)
 
 
 class ChatConsumer(AsyncWebsocketConsumer):
     async def connect(self):
-        print("Connect 1")
+
+        logger.info("Connect 1")
         chat_id = self.scope['url_route']['kwargs']['chat_id']
 
         user = self.scope['user']
         if user == AnonymousUser():
-            print("No such user")
+            logger.info("No such user")
             raise DenyConnection("Authentication error")
         else:
-            print(user)
-        print("Connect 2")
+            logger.info(str(user))
+        logger.info("Connect 2")
 
         self.room_name = chat_id
         self.room_group_name = f'Chat_{chat_id}_{user}'
-        print("Connect 3")
+        logger.info("Connect 3")
         await self.channel_layer.group_add(
             self.room_group_name,
             self.channel_name
         )
-        print("Connect 4")
+        logger.info("Connect 4")
         try:
             UserChat.objects.get(user=self.scope['user'], chat=chat_id)
             self.chat = chat_id
         except UserChat.DoesNotExist:
             raise DenyConnection("No such user in this chat")
-        print("Connect 5")
+        logger.info("Connect 5")
         await self.accept()
-        print("Connect 6")
+        logger.info("Connect 6")
 
     async def websocket_receive(self, data):
-        print("Receive 1", data)
-        j_data = json.loads(data['text'])
-        print("Receive 2")
+        logger.info("Receive 1" + str(data))
+        try:
+            j_data = json.loads(data['text'])
+        except Exception:
+            return
+        logger.info("Receive 2")
         try:
             response_message = self.response_message(j_data)
         except Exception:
-            print("Some error on response_message")
+            logger.info("Some error on response_message")
             response_message = {"id": -666}
         if response_message["id"] == -666:
             return
@@ -60,10 +67,10 @@ class ChatConsumer(AsyncWebsocketConsumer):
                     'data': response_message
                 }
             )
-        print("Receive 4")
+        logger.info("Receive 4")
 
     def response_message(self, data):
-        print("ROOM", self.room_group_name)
+        logger.info("ROOM " + str(self.room_group_name))
         m_type = data["type"]
         if m_type == "edit":
             return self.edit_message(data)
@@ -72,23 +79,23 @@ class ChatConsumer(AsyncWebsocketConsumer):
         try:
             serializer = self.__serializer(data)
         except Exception:
-            print("Serializer error")
+            logger.info("Serializer error")
             return {"id": -666}
         if serializer.is_valid():
             serializer.save()
-            print("New message", serializer.data)
+            logger.info("New message" + str(serializer.data))
             res_serializer = MessageResponseSerializer(Message.objects.get(id=serializer.data['id']))
             res_data = res_serializer.data
-            print("res_data", res_data)
+            logger.info("res_data", res_data)
             return res_data
         else:
-            print("invalid data")
+            logger.info("invalid data")
             return {"id": -666}
 
     def edit_message(self, data):
         msg = Message.objects.get(pk=data["message"])
         if msg.message_type == 2 or msg.sender.id != self.scope['user']:
-            print("Edit error")
+            logger.info("Edit error")
             return {"id": -666}
         msg.content = data["content"]
         msg.message_type = MessageType.objects.get(pk=3)
@@ -100,7 +107,7 @@ class ChatConsumer(AsyncWebsocketConsumer):
     def delete_message(self, data):
         msg = Message.objects.get(pk=data["message"])
         if msg.sender.id != self.scope['user']:
-            print("Delete error")
+            logger.info("Delete error")
             return {"id": -666}
         res_serializer = MessageResponseSerializer(msg)
         res_data = res_serializer.data
@@ -121,9 +128,9 @@ class ChatConsumer(AsyncWebsocketConsumer):
         elif m_type == "resend":  # type message chat
             UserChat.objects.get(chat_id=data["chat"], user_id=self.scope['user'])
             old_msg = Message.objects.get(pk=data["message"])
-            print("SERIALIZER")
+            logger.info("SERIALIZER")
             serializer = MessageSerializer(old_msg)
-            print(serializer.data)
+            logger.info(str(serializer.data))
             new_msg["content"] = old_msg.content
             new_msg["creator"] = old_msg.creator.pk
             new_msg["message_type"] = 2
@@ -132,19 +139,19 @@ class ChatConsumer(AsyncWebsocketConsumer):
 
     async def to_user(self, event):
         data = event['data']
-        print("EVENT", event)
-        print(self.scope['user'])
+        logger.info("EVENT" + str(event))
+        logger.info("user" + str(self.scope['user']))
         user = self.scope['user']
         data['is_sender'] = data['sender']['id'] == user
         await self.send(text_data=json.dumps(data))
 
     async def websocket_disconnect(self, message):
-        print("Disconnect 1")
+        logger.info("Disconnect 1")
         await self.channel_layer.group_discard(
             self.room_group_name,
             self.channel_name
         )
-        print("Disconnect 2")
+        logger.info("Disconnect 2")
 
 
 # User consumer

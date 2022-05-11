@@ -1,0 +1,200 @@
+INFO -- 2022-05-05 02:51:10,510: chat list
+INFO -- 2022-05-05 02:51:59,020: chat list
+INFO -- 2022-05-05 02:53:44,305: chat list
+INFO -- 2022-05-05 02:54:39,397: chat list
+INFO -- 2022-05-05 02:54:47,751: chat list
+INFO -- 2022-05-05 10:30:08,168: Connect 1
+INFO -- 2022-05-05 10:30:08,174: No such user
+INFO -- 2022-05-05 10:30:08,180: Disconnect 1
+INFO -- 2022-05-05 10:30:21,088: Connect 1
+INFO -- 2022-05-05 10:30:21,089: 2
+INFO -- 2022-05-05 10:30:21,090: Connect 2
+INFO -- 2022-05-05 10:30:21,090: Connect 3
+INFO -- 2022-05-05 10:30:21,145: Connect 4
+INFO -- 2022-05-05 10:30:21,252: Connect 5
+INFO -- 2022-05-05 10:30:21,253: Connect 6
+INFO -- 2022-05-05 10:31:14,443: Connect 1
+INFO -- 2022-05-05 10:31:14,443: 2
+INFO -- 2022-05-05 10:31:14,444: Connect 2
+INFO -- 2022-05-05 10:31:14,444: Connect 3
+INFO -- 2022-05-05 10:31:14,447: Connect 4
+INFO -- 2022-05-05 10:31:14,545: Connect 5
+INFO -- 2022-05-05 10:31:14,546: Connect 6
+INFO -- 2022-05-05 10:31:18,863: Receive 1{'type': 'websocket.receive', 'text': '{\r\n    "type": "send",\r\n    "content": "HELLO"\r\n}'}
+INFO -- 2022-05-05 10:31:18,864: Receive 2
+INFO -- 2022-05-05 10:31:18,865: ROOM Chat_1_2
+INFO -- 2022-05-05 10:31:18,879: New message{'id': 284, 'content': 'HELLO', 'date': '2022-05-05T04:31:18.873631Z', 'creator': 2, 'sender': 2, 'chat': 1, 'message_type': 1}
+INFO -- 2022-05-05 10:31:18,893: res_data
+INFO -- 2022-05-05 10:31:18,949: Receive 4
+INFO -- 2022-05-05 10:31:18,949: EVENT{'type': 'to_user', 'chat_id': 1, 'data': {'id': 284, 'content': 'HELLO', 'creator': {'id': 2, 'profile': {'first_name': 'Kambar', 'last_name': 'Zhamauov', 'image': None}}, 'sender': {'id': 2, 'profile': {'first_name': 'Kambar', 'last_name': 'Zhamauov', 'image': None}}, 'date': '2022-05-05T04:31:18.873631Z', 'chat': 1, 'message_type': 1}}
+INFO -- 2022-05-05 10:31:18,950: user2
+INFO -- 2022-05-05 10:31:51,865: Receive 1{'type': 'websocket.receive', 'text': '{\r\n    "type": "edit",\r\n    "message": 284,\r\n    "content": "HI"\r\n}'}
+INFO -- 2022-05-05 10:31:51,867: Receive 2
+INFO -- 2022-05-05 10:31:51,868: ROOM Chat_1_2
+INFO -- 2022-05-05 10:31:51,960: Receive 4
+INFO -- 2022-05-05 10:31:51,961: EVENT{'type': 'to_user', 'chat_id': 1, 'data': {'id': 284, 'content': 'HI', 'creator': {'id': 2, 'profile': {'first_name': 'Kambar', 'last_name': 'Zhamauov', 'image': None}}, 'sender': {'id': 2, 'profile': {'first_name': 'Kambar', 'last_name': 'Zhamauov', 'image': None}}, 'date': '2022-05-05T04:31:18.873631Z', 'chat': 1, 'message_type': 3}}
+INFO -- 2022-05-05 10:31:51,962: user2
+INFO -- 2022-05-05 10:32:17,693: Receive 1{'type': 'websocket.receive', 'text': '{\r\n    "type": "resend",\r\n    "message": 284,\r\n    "chat": 1\r\n}'}
+INFO -- 2022-05-05 10:32:17,694: Receive 2
+INFO -- 2022-05-05 10:32:17,695: ROOM Chat_1_2
+INFO -- 2022-05-05 10:32:17,699: SERIALIZER
+INFO -- 2022-05-05 10:32:17,700: {'id': 284, 'content': 'HI', 'date': '2022-05-05T04:31:18.873631Z', 'creator': 2, 'sender': 2, 'chat': 1, 'message_type': 3}
+INFO -- 2022-05-05 10:32:17,755: New message{'id': 285, 'content': 'HI', 'date': '2022-05-05T04:32:17.707213Z', 'creator': 2, 'sender': 2, 'chat': 1, 'message_type': 2}
+INFO -- 2022-05-05 10:32:17,768: res_data
+INFO -- 2022-05-05 10:32:17,781: Receive 4
+INFO -- 2022-05-05 10:32:17,782: EVENT{'type': 'to_user', 'chat_id': 1, 'data': {'id': 285, 'content': 'HI', 'creator': {'id': 2, 'profile': {'first_name': 'Kambar', 'last_name': 'Zhamauov', 'image': None}}, 'sender': {'id': 2, 'profile': {'first_name': 'Kambar', 'last_name': 'Zhamauov', 'image': None}}, 'date': '2022-05-05T04:32:17.707213Z', 'chat': 1, 'message_type': 2}}
+INFO -- 2022-05-05 10:32:17,782: user2
+INFO -- 2022-05-05 10:32:36,764: Receive 1{'type': 'websocket.receive', 'text': '{\r\n    "type": "delete",\r\n    "message": 285\r\n}'}
+INFO -- 2022-05-05 10:32:36,766: Receive 2
+INFO -- 2022-05-05 10:32:36,766: ROOM Chat_1_2
+INFO -- 2022-05-05 10:32:36,848: Receive 4
+INFO -- 2022-05-05 10:32:36,849: EVENT{'type': 'to_user', 'chat_id': 1, 'data': {'id': 285, 'content': 'HI', 'creator': {'id': 2, 'profile': {'first_name': 'Kambar', 'last_name': 'Zhamauov', 'image': None}}, 'sender': {'id': 2, 'profile': {'first_name': 'Kambar', 'last_name': 'Zhamauov', 'image': None}}, 'date': '2022-05-05T04:32:17.707213Z', 'chat': 1, 'message_type': 4}}
+INFO -- 2022-05-05 10:32:36,851: user2
+INFO -- 2022-05-05 10:37:23,787: Connect 1
+INFO -- 2022-05-05 10:37:23,790: 1
+INFO -- 2022-05-05 10:37:23,792: Connect 2
+INFO -- 2022-05-05 10:37:23,793: Connect 3
+INFO -- 2022-05-05 10:37:23,801: Connect 4
+INFO -- 2022-05-05 10:37:23,880: Connect 5
+INFO -- 2022-05-05 10:37:23,886: Connect 6
+INFO -- 2022-05-05 10:44:38,288: Disconnect 1
+INFO -- 2022-05-05 10:44:38,293: Disconnect 2
+INFO -- 2022-05-05 10:46:51,340: Connect 1
+INFO -- 2022-05-05 10:46:51,342: 2
+INFO -- 2022-05-05 10:46:51,345: Connect 2
+INFO -- 2022-05-05 10:46:51,351: Connect 3
+INFO -- 2022-05-05 10:46:51,357: Connect 4
+INFO -- 2022-05-05 10:46:51,461: Connect 5
+INFO -- 2022-05-05 10:46:51,464: Connect 6
+INFO -- 2022-05-05 10:48:52,997: Disconnect 1
+INFO -- 2022-05-05 10:48:53,008: Disconnect 2
+INFO -- 2022-05-05 10:49:11,602: Connect 1
+INFO -- 2022-05-05 10:49:11,603: 2
+INFO -- 2022-05-05 10:49:11,604: Connect 2
+INFO -- 2022-05-05 10:49:11,605: Connect 3
+INFO -- 2022-05-05 10:49:11,608: Connect 4
+INFO -- 2022-05-05 10:49:11,753: Connect 5
+INFO -- 2022-05-05 10:49:11,754: Connect 6
+INFO -- 2022-05-05 10:50:48,553: Connect 1
+INFO -- 2022-05-05 10:50:48,553: 1
+INFO -- 2022-05-05 10:50:48,554: Connect 2
+INFO -- 2022-05-05 10:50:48,554: Connect 3
+INFO -- 2022-05-05 10:50:48,564: Connect 4
+INFO -- 2022-05-05 10:50:48,617: Connect 5
+INFO -- 2022-05-05 10:50:48,620: Connect 6
+INFO -- 2022-05-05 10:51:21,208: Receive 1{'type': 'websocket.receive', 'text': '{"type": "send", "content": "Hi"}'}
+INFO -- 2022-05-05 10:51:21,208: Receive 2
+INFO -- 2022-05-05 10:51:21,208: ROOM Chat_1_1
+INFO -- 2022-05-05 10:51:21,231: New message{'id': 286, 'content': 'Hi', 'date': '2022-05-05T04:51:21.220063Z', 'creator': 1, 'sender': 1, 'chat': 1, 'message_type': 1}
+INFO -- 2022-05-05 10:51:21,241: res_data
+INFO -- 2022-05-05 10:51:21,267: Receive 4
+INFO -- 2022-05-05 10:51:21,268: EVENT{'type': 'to_user', 'chat_id': 1, 'data': {'id': 286, 'content': 'Hi', 'creator': {'id': 1, 'profile': {'first_name': 'Aldiyar', 'last_name': 'Adelov', 'image': '/media/images/AxDI.jpg'}}, 'sender': {'id': 1, 'profile': {'first_name': 'Aldiyar', 'last_name': 'Adelov', 'image': '/media/images/AxDI.jpg'}}, 'date': '2022-05-05T04:51:21.220063Z', 'chat': 1, 'message_type': 1}}
+INFO -- 2022-05-05 10:51:21,269: user1
+INFO -- 2022-05-05 10:54:21,136: Disconnect 1
+INFO -- 2022-05-05 10:54:21,137: Disconnect 2
+INFO -- 2022-05-05 11:03:08,931: Connect 1
+INFO -- 2022-05-05 11:03:08,933: 1
+INFO -- 2022-05-05 11:03:08,933: Connect 2
+INFO -- 2022-05-05 11:03:08,933: Connect 3
+INFO -- 2022-05-05 11:03:08,941: Connect 4
+INFO -- 2022-05-05 11:03:09,041: Connect 5
+INFO -- 2022-05-05 11:03:09,084: Connect 6
+INFO -- 2022-05-05 11:03:15,997: Disconnect 1
+INFO -- 2022-05-05 11:03:15,997: Disconnect 2
+INFO -- 2022-05-05 11:03:40,351: Connect 1
+INFO -- 2022-05-05 11:03:40,359: 1
+INFO -- 2022-05-05 11:03:40,359: Connect 2
+INFO -- 2022-05-05 11:03:40,359: Connect 3
+INFO -- 2022-05-05 11:03:40,362: Connect 4
+INFO -- 2022-05-05 11:03:40,439: Connect 5
+INFO -- 2022-05-05 11:03:40,442: Connect 6
+INFO -- 2022-05-05 11:14:45,915: Disconnect 1
+INFO -- 2022-05-05 11:14:45,918: Disconnect 2
+INFO -- 2022-05-05 13:00:28,416: Connect 1
+INFO -- 2022-05-05 13:00:28,417: 2
+INFO -- 2022-05-05 13:00:28,417: Connect 2
+INFO -- 2022-05-05 13:00:28,418: Connect 3
+INFO -- 2022-05-05 13:00:28,440: Connect 4
+INFO -- 2022-05-05 13:00:28,643: Connect 5
+INFO -- 2022-05-05 13:00:28,646: Connect 6
+INFO -- 2022-05-05 13:01:19,290: Connect 1
+INFO -- 2022-05-05 13:01:19,294: 1
+INFO -- 2022-05-05 13:01:19,295: Connect 2
+INFO -- 2022-05-05 13:01:19,298: Connect 3
+INFO -- 2022-05-05 13:01:19,303: Connect 4
+INFO -- 2022-05-05 13:01:19,390: Connect 5
+INFO -- 2022-05-05 13:01:19,394: Connect 6
+INFO -- 2022-05-05 13:01:22,934: Receive 1{'type': 'websocket.receive', 'text': '{\r\n    "type": "send",\r\n    "content": "Hello"\r\n}'}
+INFO -- 2022-05-05 13:01:22,934: Receive 2
+INFO -- 2022-05-05 13:01:22,935: ROOM Chat_1_2
+INFO -- 2022-05-05 13:01:22,955: New message{'id': 287, 'content': 'Hello', 'date': '2022-05-05T07:01:22.946502Z', 'creator': 2, 'sender': 2, 'chat': 1, 'message_type': 1}
+INFO -- 2022-05-05 13:01:22,970: res_data
+INFO -- 2022-05-05 13:01:23,035: Receive 4
+INFO -- 2022-05-05 13:01:23,036: EVENT{'type': 'to_user', 'chat_id': 1, 'data': {'id': 287, 'content': 'Hello', 'creator': {'id': 2, 'profile': {'first_name': 'Kambar', 'last_name': 'Zhamauov', 'image': None}}, 'sender': {'id': 2, 'profile': {'first_name': 'Kambar', 'last_name': 'Zhamauov', 'image': None}}, 'date': '2022-05-05T07:01:22.946502Z', 'chat': 1, 'message_type': 1}}
+INFO -- 2022-05-05 13:01:23,038: user2
+INFO -- 2022-05-05 13:01:23,039: EVENT{'type': 'to_user', 'chat_id': 1, 'data': {'id': 287, 'content': 'Hello', 'creator': {'id': 2, 'profile': {'first_name': 'Kambar', 'last_name': 'Zhamauov', 'image': None}}, 'sender': {'id': 2, 'profile': {'first_name': 'Kambar', 'last_name': 'Zhamauov', 'image': None}}, 'date': '2022-05-05T07:01:22.946502Z', 'chat': 1, 'message_type': 1}}
+INFO -- 2022-05-05 13:01:23,040: user1
+INFO -- 2022-05-05 13:01:31,061: Receive 1{'type': 'websocket.receive', 'text': '{"type": "send", "content": "aasda"}'}
+INFO -- 2022-05-05 13:01:31,062: Receive 2
+INFO -- 2022-05-05 13:01:31,062: ROOM Chat_1_1
+INFO -- 2022-05-05 13:01:31,075: New message{'id': 288, 'content': 'aasda', 'date': '2022-05-05T07:01:31.072621Z', 'creator': 1, 'sender': 1, 'chat': 1, 'message_type': 1}
+INFO -- 2022-05-05 13:01:31,091: res_data
+INFO -- 2022-05-05 13:01:31,103: EVENT{'type': 'to_user', 'chat_id': 1, 'data': {'id': 288, 'content': 'aasda', 'creator': {'id': 1, 'profile': {'first_name': 'Aldiyar', 'last_name': 'Adelov', 'image': '/media/images/AxDI.jpg'}}, 'sender': {'id': 1, 'profile': {'first_name': 'Aldiyar', 'last_name': 'Adelov', 'image': '/media/images/AxDI.jpg'}}, 'date': '2022-05-05T07:01:31.072621Z', 'chat': 1, 'message_type': 1}}
+INFO -- 2022-05-05 13:01:31,110: user2
+INFO -- 2022-05-05 13:01:31,116: Receive 4
+INFO -- 2022-05-05 13:01:31,119: EVENT{'type': 'to_user', 'chat_id': 1, 'data': {'id': 288, 'content': 'aasda', 'creator': {'id': 1, 'profile': {'first_name': 'Aldiyar', 'last_name': 'Adelov', 'image': '/media/images/AxDI.jpg'}}, 'sender': {'id': 1, 'profile': {'first_name': 'Aldiyar', 'last_name': 'Adelov', 'image': '/media/images/AxDI.jpg'}}, 'date': '2022-05-05T07:01:31.072621Z', 'chat': 1, 'message_type': 1}}
+INFO -- 2022-05-05 13:01:31,120: user1
+INFO -- 2022-05-05 13:03:01,001: Disconnect 1
+INFO -- 2022-05-05 13:03:01,019: Disconnect 2
+INFO -- 2022-05-05 16:00:46,849: Connect 1
+INFO -- 2022-05-05 16:00:46,850: 1
+INFO -- 2022-05-05 16:00:46,851: Connect 2
+INFO -- 2022-05-05 16:00:46,851: Connect 3
+INFO -- 2022-05-05 16:00:46,867: Connect 4
+INFO -- 2022-05-05 16:00:46,946: Connect 5
+INFO -- 2022-05-05 16:00:46,947: Connect 6
+INFO -- 2022-05-05 16:01:29,176: Receive 1{'type': 'websocket.receive', 'text': '{"type": "send", "content": "dfihnasfjnasofnasofnosanfokasnf"}'}
+INFO -- 2022-05-05 16:01:29,177: Receive 2
+INFO -- 2022-05-05 16:01:29,177: ROOM Chat_1_1
+INFO -- 2022-05-05 16:01:29,209: New message{'id': 289, 'content': 'dfihnasfjnasofnasofnosanfokasnf', 'date': '2022-05-05T10:01:29.187584Z', 'creator': 1, 'sender': 1, 'chat': 1, 'message_type': 1}
+INFO -- 2022-05-05 16:01:29,227: res_data
+INFO -- 2022-05-05 16:01:29,284: Receive 4
+INFO -- 2022-05-05 16:01:29,285: EVENT{'type': 'to_user', 'chat_id': 1, 'data': {'id': 289, 'content': 'dfihnasfjnasofnasofnosanfokasnf', 'creator': {'id': 1, 'profile': {'first_name': 'Aldiyar', 'last_name': 'Adelov', 'image': '/media/images/AxDI.jpg'}}, 'sender': {'id': 1, 'profile': {'first_name': 'Aldiyar', 'last_name': 'Adelov', 'image': '/media/images/AxDI.jpg'}}, 'date': '2022-05-05T10:01:29.187584Z', 'chat': 1, 'message_type': 1}}
+INFO -- 2022-05-05 16:01:29,286: user1
+INFO -- 2022-05-05 16:01:54,385: Receive 1{'type': 'websocket.receive', 'text': '{"type": "edit", "message": 289}'}
+INFO -- 2022-05-05 16:01:54,385: Receive 2
+INFO -- 2022-05-05 16:01:54,386: ROOM Chat_1_1
+INFO -- 2022-05-05 16:01:54,392: Some error on response_message
+INFO -- 2022-05-05 16:02:21,261: Disconnect 1
+INFO -- 2022-05-05 16:02:21,262: Disconnect 2
+INFO -- 2022-05-05 16:02:22,691: Connect 1
+INFO -- 2022-05-05 16:02:22,691: 1
+INFO -- 2022-05-05 16:02:22,692: Connect 2
+INFO -- 2022-05-05 16:02:22,692: Connect 3
+INFO -- 2022-05-05 16:02:22,694: Connect 4
+INFO -- 2022-05-05 16:02:22,800: Connect 5
+INFO -- 2022-05-05 16:02:22,808: Connect 6
+INFO -- 2022-05-05 16:02:30,062: Receive 1{'type': 'websocket.receive', 'text': '{"type": "resend", "message": 289, "chat": 1}'}
+INFO -- 2022-05-05 16:02:30,063: Receive 2
+INFO -- 2022-05-05 16:02:30,063: ROOM Chat_1_1
+INFO -- 2022-05-05 16:02:30,067: SERIALIZER
+INFO -- 2022-05-05 16:02:30,069: {'id': 289, 'content': 'dfihnasfjnasofnasofnosanfokasnf', 'date': '2022-05-05T10:01:29.187584Z', 'creator': 1, 'sender': 1, 'chat': 1, 'message_type': 1}
+INFO -- 2022-05-05 16:02:30,086: New message{'id': 290, 'content': 'dfihnasfjnasofnasofnosanfokasnf', 'date': '2022-05-05T10:02:30.082549Z', 'creator': 1, 'sender': 1, 'chat': 1, 'message_type': 2}
+INFO -- 2022-05-05 16:02:30,104: res_data
+INFO -- 2022-05-05 16:02:30,118: Receive 4
+INFO -- 2022-05-05 16:02:30,119: EVENT{'type': 'to_user', 'chat_id': 1, 'data': {'id': 290, 'content': 'dfihnasfjnasofnasofnosanfokasnf', 'creator': {'id': 1, 'profile': {'first_name': 'Aldiyar', 'last_name': 'Adelov', 'image': '/media/images/AxDI.jpg'}}, 'sender': {'id': 1, 'profile': {'first_name': 'Aldiyar', 'last_name': 'Adelov', 'image': '/media/images/AxDI.jpg'}}, 'date': '2022-05-05T10:02:30.082549Z', 'chat': 1, 'message_type': 2}}
+INFO -- 2022-05-05 16:02:30,121: user1
+INFO -- 2022-05-05 16:02:46,271: Receive 1{'type': 'websocket.receive', 'text': '{"type": "delete", "message": 290}'}
+INFO -- 2022-05-05 16:02:46,272: Receive 2
+INFO -- 2022-05-05 16:02:46,272: ROOM Chat_1_1
+INFO -- 2022-05-05 16:02:46,300: Receive 4
+INFO -- 2022-05-05 16:02:46,301: EVENT{'type': 'to_user', 'chat_id': 1, 'data': {'id': 290, 'content': 'dfihnasfjnasofnasofnosanfokasnf', 'creator': {'id': 1, 'profile': {'first_name': 'Aldiyar', 'last_name': 'Adelov', 'image': '/media/images/AxDI.jpg'}}, 'sender': {'id': 1, 'profile': {'first_name': 'Aldiyar', 'last_name': 'Adelov', 'image': '/media/images/AxDI.jpg'}}, 'date': '2022-05-05T10:02:30.082549Z', 'chat': 1, 'message_type': 4}}
+INFO -- 2022-05-05 16:02:46,302: user1
+INFO -- 2022-05-05 16:02:55,267: Receive 1{'type': 'websocket.receive', 'text': '{"type": "delete", "message": 289}'}
+INFO -- 2022-05-05 16:02:55,267: Receive 2
+INFO -- 2022-05-05 16:02:55,268: ROOM Chat_1_1
+INFO -- 2022-05-05 16:02:55,294: Receive 4
+INFO -- 2022-05-05 16:02:55,295: EVENT{'type': 'to_user', 'chat_id': 1, 'data': {'id': 289, 'content': 'dfihnasfjnasofnasofnosanfokasnf', 'creator': {'id': 1, 'profile': {'first_name': 'Aldiyar', 'last_name': 'Adelov', 'image': '/media/images/AxDI.jpg'}}, 'sender': {'id': 1, 'profile': {'first_name': 'Aldiyar', 'last_name': 'Adelov', 'image': '/media/images/AxDI.jpg'}}, 'date': '2022-05-05T10:01:29.187584Z', 'chat': 1, 'message_type': 4}}
+INFO -- 2022-05-05 16:02:55,296: user1
+INFO -- 2022-05-05 16:03:08,470: Disconnect 1
+INFO -- 2022-05-05 16:03:08,471: Disconnect 2

@@ -12,6 +12,7 @@ from .models import User, Profile
 from django.http import HttpResponse, JsonResponse
 from user.serializers import ProfileSerializer
 
+
 # Create your views here.
 @csrf_exempt
 def create_user(request):

@@ -14,6 +14,3 @@ urlpatterns = [
     path('messages/', MessageListAPIView.as_view()),
     path('messages/<int:pk>/', MessageDetailAPIView.as_view()),
 ]
-
-
-

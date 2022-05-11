@@ -4,6 +4,9 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 from core.serializers import ChatSerializer, MessageResponseSerializer, ChatMessageSerializer
 from core.models import Chat, Message, UserChat
+import logging
+
+logger = logging.getLogger(__name__)
 
 
 class ChatListAPIView(generics.ListCreateAPIView):
@@ -13,6 +16,7 @@ class ChatListAPIView(generics.ListCreateAPIView):
 
     def get(self, request, *args, **kwargs):
         serializer = self.serializer_class(self.queryset.all(), many=True)
+        logger.info('chat list')
         return Response(serializer.data, status=status.HTTP_200_OK)
 
 
