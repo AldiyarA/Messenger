@@ -6,27 +6,23 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.android.R
 import com.example.android.adapters.ChatAdapter
-import com.example.android.api.ChatService
-import com.example.android.api.createChatService
 import com.example.android.databinding.FragmentChatListBinding
 import com.example.android.globals.AppPreferences
 import com.example.android.models.Chat
-import com.example.android.repository.ChatRepository
 import com.example.android.view_model.ChatViewModel
-import com.example.android.view_model.ChatViewModelFactory
+import com.example.android.view_model.DBViewModel
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class ChatListFragment : Fragment() {
     private lateinit var binding: FragmentChatListBinding
-    private lateinit var repository: ChatRepository
-    private lateinit var viewModel: ChatViewModel
-    private lateinit var service: ChatService
-    private lateinit var viewModelFactory: ChatViewModelFactory
+    private val vm: ChatViewModel by viewModel<ChatViewModel>()
+    private val db: DBViewModel by viewModel<DBViewModel>()
+
     private lateinit var layoutManager: RecyclerView.LayoutManager
     private lateinit var adapter: ChatAdapter
 
@@ -38,12 +34,11 @@ class ChatListFragment : Fragment() {
         binding = FragmentChatListBinding.inflate(layoutInflater)
         layoutManager = LinearLayoutManager(activity)
 
-        configureViewModel()
         configureAdapter()
 
-        viewModel.getUserChats()
+        vm.getUserChats()
 
-        viewModel.userChatsResponse.observe(viewLifecycleOwner){ response->
+        vm.userChatsResponse.observe(viewLifecycleOwner){ response->
             if (response.isSuccessful){
                 val chats = response.body()
                 adapter.submitList(chats)
@@ -53,16 +48,10 @@ class ChatListFragment : Fragment() {
         }
         binding.logoutBtn.setOnClickListener { view: View->
             AppPreferences.accessToken = null
-            AppPreferences.refreshToken = null
+            db.delete()
             findNavController().navigate(R.id.action_chat_to_login)
         }
         return binding.root
-    }
-    private fun configureViewModel(){
-        service = createChatService()
-        repository = ChatRepository(service)
-        viewModelFactory = ChatViewModelFactory(repository=repository)
-        viewModel = ViewModelProvider(this, viewModelFactory)[ChatViewModel::class.java]
     }
 
     private fun configureAdapter() {

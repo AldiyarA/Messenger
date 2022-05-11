@@ -6,27 +6,22 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.android.R
-import com.example.android.api.AuthService
-import com.example.android.api.createAuthService
 import com.example.android.databinding.FragmentLoginBinding
 import com.example.android.globals.AppPreferences
 import com.example.android.models.Credentials
 import com.example.android.models.Profile
 import com.example.android.models.UserForm
-import com.example.android.repository.AuthRepository
 import com.example.android.view_model.AuthViewModel
-import com.example.android.view_model.AuthViewModelFactory
+import com.example.android.view_model.DBViewModel
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
 class LoginFragment : Fragment() {
     private lateinit var binding: FragmentLoginBinding
-    private lateinit var repository: AuthRepository
-    private lateinit var viewModel: AuthViewModel
-    private lateinit var service: AuthService
-    private lateinit var viewModelFactory: AuthViewModelFactory
+    private val vm: AuthViewModel by viewModel<AuthViewModel>()
+    private val db: DBViewModel by viewModel<DBViewModel>()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -34,8 +29,7 @@ class LoginFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         binding = FragmentLoginBinding.inflate(inflater, container, false)
-
-        configureViewModel()
+        db.get()
         observe()
 
         Log.e("Button", binding.loginButton.text.toString())
@@ -46,34 +40,48 @@ class LoginFragment : Fragment() {
     }
 
     private fun observe() {
-        viewModel.loginResponse.observe(viewLifecycleOwner) { response ->
+        vm.loginResponse.observe(viewLifecycleOwner) { response ->
             if (response.isSuccessful) {
                 val authToken = response.body()
                 if (authToken != null) {
                     AppPreferences.accessToken = authToken.access
-                    AppPreferences.refreshToken = authToken.refresh
+//                    AppPreferences.refreshToken = authToken.refresh
+                    db.insert(authToken.refresh!!)
                 }
                 findNavController().navigate(R.id.action_login_to_chat)
             }
         }
-        viewModel.signupResponse.observe(viewLifecycleOwner) { response ->
+        vm.signupResponse.observe(viewLifecycleOwner) { response ->
             if (response.isSuccessful){
                 login()
             }
+        }
+        db.refreshToken.observe(viewLifecycleOwner) { refreshTokenList ->
+            if (refreshTokenList.isEmpty()){
+                return@observe
+            }
+            Log.e("Login fragment", "Found refresh")
+            vm.refresh(refreshTokenList.first())
+        }
+        vm.refreshResponse.observe(viewLifecycleOwner) { response ->
+            Log.e("Login fragment", "New Access token")
+            Log.e("Login fragment", "Response $response")
+            if (response.isSuccessful){
+                Log.e("Login fragment", "New Access token success")
+                val authToken = response.body()
+                if (authToken != null) {
+                    AppPreferences.accessToken = authToken.access
+                }
+                findNavController().navigate(R.id.action_login_to_chat)
+            }
+            Log.e("Login fragment", "New Access token request end")
         }
     }
 
     private fun login(){
         val credentials = getCredentials()
         Log.e(LoginFragment::class.java.simpleName, "${credentials.email}, ${credentials.password}")
-        viewModel.login(credentials)
-    }
-
-    private fun configureViewModel() {
-        service = createAuthService()
-        repository = AuthRepository(service)
-        viewModelFactory = AuthViewModelFactory(repository = repository)
-        viewModel = ViewModelProvider(this, viewModelFactory)[AuthViewModel::class.java]
+        vm.login(credentials)
     }
 
     private fun getCredentials(): Credentials {
@@ -126,7 +134,7 @@ class LoginFragment : Fragment() {
         binding.signupButton.setOnClickListener { view: View->
             Log.e("BUTTON CLICKED", "SIGNUP")
             val userForm = getUserForm()
-            viewModel.signup(userForm)
+            vm.signup(userForm)
         }
         binding.toLoginButton.setOnClickListener { view: View->
             Log.e("BUTTON CLICKED", "To Login Button")

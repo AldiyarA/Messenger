@@ -21,10 +21,6 @@ object AppPreferences {
         get() = Key.ACCESS_TOKEN.getString()
         set(value) = Key.ACCESS_TOKEN.setString(value)
 
-    var refreshToken: String?
-        get() = Key.REFRESH_TOKEN.getString()
-        set(value) = Key.REFRESH_TOKEN.setString(value)
-
     private enum class Key {
         ACCESS_TOKEN, REFRESH_TOKEN, USER_ID;
 

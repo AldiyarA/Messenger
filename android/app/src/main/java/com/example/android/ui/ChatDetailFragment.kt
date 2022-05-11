@@ -26,15 +26,16 @@ import com.example.android.repository.ChatRepository
 import com.example.android.view_model.ChatViewModel
 import com.example.android.view_model.ChatViewModelFactory
 import com.example.android.websocket.MessageWebSocket
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
 class ChatDetailFragment : Fragment() {
     private val args: ChatDetailFragmentArgs by navArgs();
     private lateinit var binding: FragmentChatDetailBinding
-    private lateinit var repository: ChatRepository
-    private lateinit var viewModel: ChatViewModel
-    private lateinit var service: ChatService
-    private lateinit var viewModelFactory: ChatViewModelFactory
+//    private lateinit var repository: ChatRepository
+    private val vm: ChatViewModel by viewModel<ChatViewModel>()
+//    private lateinit var service: ChatService
+//    private lateinit var viewModelFactory: ChatViewModelFactory
 
     private lateinit var layoutManager: RecyclerView.LayoutManager
     private lateinit var layoutManager2: RecyclerView.LayoutManager
@@ -52,23 +53,23 @@ class ChatDetailFragment : Fragment() {
         layoutManager = LinearLayoutManager(activity)
         layoutManager2 = LinearLayoutManager(activity)
 
-        configureViewModel()
+//        configureViewModel()
         configureAdapter()
 
         val chatId = args.chatId
-        viewModel.getChatById(chatId)
-        viewModel.getMessages(chatId)
+        vm.getChatById(chatId)
+        vm.getMessages(chatId)
 
         observeResponse()
         setOnClickListeners()
         return binding.root
     }
-    private fun configureViewModel(){
-        service = createChatService()
-        repository = ChatRepository(service)
-        viewModelFactory = ChatViewModelFactory(repository=repository)
-        viewModel = ViewModelProvider(this, viewModelFactory)[ChatViewModel::class.java]
-    }
+//    private fun configureViewModel(){
+//        service = createChatService()
+//        repository = ChatRepository(service)
+//        viewModelFactory = ChatViewModelFactory(repository=repository)
+//        vm = ViewModelProvider(this, viewModelFactory)[ChatViewModel::class.java]
+//    }
 
     private fun configureAdapter() {
         binding.messagesRV.layoutManager = layoutManager
@@ -105,7 +106,7 @@ class ChatDetailFragment : Fragment() {
     }
 
     private fun observeResponse(){
-        viewModel.chatById.observe(viewLifecycleOwner) {response->
+        vm.chatById.observe(viewLifecycleOwner) { response->
             if (response.isSuccessful){
                 val chat = response.body()
                 binding.chatName.text = chat?.name
@@ -116,7 +117,7 @@ class ChatDetailFragment : Fragment() {
                 Toast.makeText(context, response.errorBody().toString(), Toast.LENGTH_SHORT).show()
             }
         }
-        viewModel.chatMessages.observe(viewLifecycleOwner) {response ->
+        vm.chatMessages.observe(viewLifecycleOwner) { response ->
             if (response.isSuccessful){
                 val messages = response.body()
                 adapter.submitList(messages!!)
@@ -125,7 +126,7 @@ class ChatDetailFragment : Fragment() {
                 Toast.makeText(context, response.errorBody().toString(), Toast.LENGTH_SHORT).show()
             }
         }
-        viewModel.userChatsResponse.observe(viewLifecycleOwner) {response ->
+        vm.userChatsResponse.observe(viewLifecycleOwner) { response ->
             if (response.isSuccessful){
                 adapter2.submitList(response.body())
             }else {
@@ -171,7 +172,7 @@ class ChatDetailFragment : Fragment() {
         fun resendMessage(message: Int){
             actionMessageId = message
             binding.resendChatsBlock.visibility = View.VISIBLE
-            viewModel.getUserChats()
+            vm.getUserChats()
         }
 
         fun editMessage(message: Message){

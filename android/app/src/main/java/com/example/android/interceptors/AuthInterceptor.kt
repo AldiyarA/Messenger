@@ -1,6 +1,5 @@
 package com.example.android.interceptors
 
-import android.content.SharedPreferences
 import com.example.android.globals.AppPreferences
 import okhttp3.Interceptor
 import okhttp3.Response

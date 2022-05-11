@@ -8,9 +8,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 const val url = "http://10.0.2.2:8000/"
 
 fun createAuthService(): AuthService {
-    val authInterceptor = AuthInterceptor()
     val client = OkHttpClient.Builder()
-        .addInterceptor(authInterceptor)
         .build()
     val retrofit = Retrofit.Builder()
         .baseUrl(url)
