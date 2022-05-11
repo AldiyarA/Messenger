@@ -22,8 +22,8 @@
         tools:layout="@layout/fragment_chat_list"
         >
         <action
-            android:id="@+id/loginAction"
-            app:destination="@+id/action_chat_to_login"
+            android:id="@+id/action_chat_to_login"
+            app:destination="@+id/loginFragment"
             />
         <action
             android:id="@+id/action_chat_to_detail"
@@ -39,6 +39,10 @@
         <argument
             android:name="chatId"
             app:argType="integer"
+            />
+        <action
+            android:id="@+id/action_detail_to_list"
+            app:destination="@+id/chatListFragment"
             />
     </fragment>
 

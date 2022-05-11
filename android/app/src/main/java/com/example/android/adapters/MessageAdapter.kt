@@ -10,6 +10,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.example.android.R
 import com.example.android.models.Message
 import com.example.android.ui.ChatDetailFragment
@@ -23,6 +24,8 @@ class MessageAdapter(
     inner class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
 //        var chatName: TextView = itemView.findViewById(R.id.chat_name)
         var initials: TextView = itemView.findViewById(R.id.initials)
+        var image: ImageView = itemView.findViewById(R.id.initialsImage)
+
         var messageBackground: ConstraintLayout = itemView.findViewById(R.id.message_background)
         var messageSender: TextView = itemView.findViewById(R.id.sender)
         var messageOwner: TextView = itemView.findViewById(R.id.owner)
@@ -45,6 +48,15 @@ class MessageAdapter(
 
         holder.initials.text = message.getInitials()
         holder.messageContent.text = message.content
+
+        if (message.sender.profile!!.image != null){
+            holder.initials.visibility = View.GONE
+            holder.image.visibility = View.VISIBLE
+            adapterActions.loadImage(message.sender.profile!!.image!!, holder.image)
+        }else{
+            holder.initials.visibility = View.VISIBLE
+            holder.image.visibility = View.GONE
+        }
 
         if (message.is_sender){
             Log.e("Message", "$position, ${message.is_sender}")
@@ -110,7 +122,6 @@ class MessageAdapter(
         dataSet.removeAt(pos)
         notifyItemRemoved(pos)
     }
-
     override fun getItemCount(): Int = dataSet.size
 
 }

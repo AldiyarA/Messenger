@@ -6,11 +6,15 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+import com.example.android.R
 import com.example.android.adapters.ChatAdapter
 import com.example.android.adapters.MessageAdapter
 import com.example.android.api.ChatService
@@ -150,6 +154,9 @@ class ChatDetailFragment : Fragment() {
             binding.messageContent.text.clear()
             toSendMode()
         }
+        binding.returnBtn.setOnClickListener {
+            findNavController().navigate(R.id.action_detail_to_list)
+        }
         binding.cancelNewMessage.setOnClickListener { toSendMode() }
     }
 
@@ -178,6 +185,18 @@ class ChatDetailFragment : Fragment() {
         fun deleteMessage(id: Int){
             webSocket.deleteMessage(id)
         }
+        fun loadImage(url: String, imageView: ImageView){
+            setImage(url, imageView)
+        }
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        webSocket.disconnect()
+    }
+
+    fun setImage(url: String, imageView: ImageView){
+        Glide.with(this).load("http://10.0.2.2:8000$url").into(imageView);
     }
 }
 

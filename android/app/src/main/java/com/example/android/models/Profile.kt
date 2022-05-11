@@ -5,5 +5,6 @@ data class Profile(
     var last_name: String,
     var bio: String? = null,
     var phone: String? = null,
-    var user: Int? = null
+    var user: Int? = null,
+    var image: String? = null
 )

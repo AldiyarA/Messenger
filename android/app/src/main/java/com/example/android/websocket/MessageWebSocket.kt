@@ -2,6 +2,7 @@ package com.example.android.websocket
 
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
+import com.beust.klaxon.Klaxon
 import com.example.android.globals.AppPreferences
 import com.example.android.models.Message
 import com.google.gson.Gson
@@ -56,29 +57,35 @@ class MessageWebSocket(private val chat: Int) {
         webSocketClient.connect()
     }
     fun sendMessage(content: String){ // {"type": "send", "content": "Hello"}
-        this.webSocketClient.send("{"
-                + "\"type\": \"send\","
-                + "\"content\":\"$content\""
-                + "}")
+        val body = mutableMapOf<String, Any>()
+        body["type"] = "send"
+        body["content"] = content
+        this.webSocketClient.send(Klaxon().toJsonString(body))
+
+        Log.e("Socket parsed data", Klaxon().toJsonString(body))
     }
     fun resendMessage(message: Int, chat: Int){ // {"type": "resend", "message": 1, "chat": 2}
-        this.webSocketClient.send("{"
-                + "\"type\": \"resend\","
-                + "\"message\":$message,"
-                + "\"chat\":$chat"
-                + "}")
+        val body = mutableMapOf<String, Any>()
+        body["type"] = "resend"
+        body["message"] = message
+        body["chat"] = chat
+        this.webSocketClient.send(Klaxon().toJsonString(body))
     }
     fun editMessage(content: String, message: Int){ // {"type": "edit", "message": 1, "content": "new content"}
-        this.webSocketClient.send("{"
-                + "\"type\": \"edit\","
-                + "\"message\":$message,"
-                + "\"content\":\"$content\""
-                + "}")
+        val body = mutableMapOf<String, Any>()
+        body["type"] = "edit"
+        body["message"] = message
+        this.webSocketClient.send(Klaxon().toJsonString(body))
+
     }
     fun deleteMessage(message: Int){ // {"type": "delete", "message": 1}
-        this.webSocketClient.send("{"
-                + "\"type\": \"delete\","
-                + "\"message\":$message"
-                + "}")
+        val body = mutableMapOf<String, Any>()
+        body["type"] = "delete"
+        body["message"] = message
+        this.webSocketClient.send(Klaxon().toJsonString(body))
+    }
+
+    fun disconnect(){
+        webSocketClient.connection.close()
     }
 }
