@@ -20,8 +20,8 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class ChatListFragment : Fragment() {
     private lateinit var binding: FragmentChatListBinding
-    private val vm: ChatViewModel by viewModel<ChatViewModel>()
-    private val db: DBViewModel by viewModel<DBViewModel>()
+    private val viewModel: ChatViewModel by viewModel<ChatViewModel>()
+    private val database: DBViewModel by viewModel<DBViewModel>()
 
     private lateinit var layoutManager: RecyclerView.LayoutManager
     private lateinit var adapter: ChatAdapter
@@ -36,9 +36,9 @@ class ChatListFragment : Fragment() {
 
         configureAdapter()
 
-        vm.getUserChats()
+        viewModel.getUserChats()
 
-        vm.userChatsResponse.observe(viewLifecycleOwner){ response->
+        viewModel.userChatsResponse.observe(viewLifecycleOwner){ response->
             if (response.isSuccessful){
                 val chats = response.body()
                 adapter.submitList(chats)
@@ -48,7 +48,7 @@ class ChatListFragment : Fragment() {
         }
         binding.logoutBtn.setOnClickListener { view: View->
             AppPreferences.accessToken = null
-            db.delete()
+            database.delete()
             findNavController().navigate(R.id.action_chat_to_login)
         }
         return binding.root

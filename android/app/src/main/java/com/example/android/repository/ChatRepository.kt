@@ -6,9 +6,6 @@ import com.example.android.models.Message
 import retrofit2.Response
 
 class ChatRepository(private val service: ChatService) {
-    suspend fun getChats(): Response<List<Chat>> {
-        return service.getChats()
-    }
 
     suspend fun getUserChats(): Response<List<Chat>> {
         return service.getUserChats()

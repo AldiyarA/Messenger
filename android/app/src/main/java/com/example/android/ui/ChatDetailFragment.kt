@@ -1,14 +1,12 @@
 package com.example.android.ui
 
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.Toast
-import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -17,14 +15,10 @@ import com.bumptech.glide.Glide
 import com.example.android.R
 import com.example.android.adapters.ChatAdapter
 import com.example.android.adapters.MessageAdapter
-import com.example.android.api.ChatService
-import com.example.android.api.createChatService
 import com.example.android.databinding.FragmentChatDetailBinding
 import com.example.android.models.Chat
 import com.example.android.models.Message
-import com.example.android.repository.ChatRepository
 import com.example.android.view_model.ChatViewModel
-import com.example.android.view_model.ChatViewModelFactory
 import com.example.android.websocket.MessageWebSocket
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -32,10 +26,7 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 class ChatDetailFragment : Fragment() {
     private val args: ChatDetailFragmentArgs by navArgs();
     private lateinit var binding: FragmentChatDetailBinding
-//    private lateinit var repository: ChatRepository
-    private val vm: ChatViewModel by viewModel<ChatViewModel>()
-//    private lateinit var service: ChatService
-//    private lateinit var viewModelFactory: ChatViewModelFactory
+    private val viewModel: ChatViewModel by viewModel<ChatViewModel>()
 
     private lateinit var layoutManager: RecyclerView.LayoutManager
     private lateinit var layoutManager2: RecyclerView.LayoutManager
@@ -53,29 +44,22 @@ class ChatDetailFragment : Fragment() {
         layoutManager = LinearLayoutManager(activity)
         layoutManager2 = LinearLayoutManager(activity)
 
-//        configureViewModel()
         configureAdapter()
 
         val chatId = args.chatId
-        vm.getChatById(chatId)
-        vm.getMessages(chatId)
+        viewModel.getChatById(chatId)
+        viewModel.getMessages(chatId)
 
         observeResponse()
         setOnClickListeners()
         return binding.root
     }
-//    private fun configureViewModel(){
-//        service = createChatService()
-//        repository = ChatRepository(service)
-//        viewModelFactory = ChatViewModelFactory(repository=repository)
-//        vm = ViewModelProvider(this, viewModelFactory)[ChatViewModel::class.java]
-//    }
 
     private fun configureAdapter() {
         binding.messagesRV.layoutManager = layoutManager
         binding.resendChatsRV.layoutManager = layoutManager2
         adapterActions = AdapterActions()
-        adapter = MessageAdapter(adapterActions)
+        adapter = MessageAdapter(requireActivity(), adapterActions)
         binding.messagesRV.adapter = adapter
 
         adapter2 = ChatAdapter { resendMessage(it) }
@@ -91,11 +75,10 @@ class ChatDetailFragment : Fragment() {
         webSocket = MessageWebSocket(id)
         webSocket.initWebSocket()
         webSocket.socketMessage.observe(viewLifecycleOwner) { message->
-            Log.e("On chat detail", message.content)
-            if (message.message_type == 3){
+            if (message.messageType == 3){
                 adapter.editMessage(message)
                 return@observe
-            }else if(message.message_type == 4){
+            }else if(message.messageType == 4){
                 adapter.deleteMessage(message)
                 return@observe
             }
@@ -106,7 +89,7 @@ class ChatDetailFragment : Fragment() {
     }
 
     private fun observeResponse(){
-        vm.chatById.observe(viewLifecycleOwner) { response->
+        viewModel.chatById.observe(viewLifecycleOwner) { response->
             if (response.isSuccessful){
                 val chat = response.body()
                 binding.chatName.text = chat?.name
@@ -117,7 +100,7 @@ class ChatDetailFragment : Fragment() {
                 Toast.makeText(context, response.errorBody().toString(), Toast.LENGTH_SHORT).show()
             }
         }
-        vm.chatMessages.observe(viewLifecycleOwner) { response ->
+        viewModel.chatMessages.observe(viewLifecycleOwner) { response ->
             if (response.isSuccessful){
                 val messages = response.body()
                 adapter.submitList(messages!!)
@@ -126,7 +109,7 @@ class ChatDetailFragment : Fragment() {
                 Toast.makeText(context, response.errorBody().toString(), Toast.LENGTH_SHORT).show()
             }
         }
-        vm.userChatsResponse.observe(viewLifecycleOwner) { response ->
+        viewModel.userChatsResponse.observe(viewLifecycleOwner) { response ->
             if (response.isSuccessful){
                 adapter2.submitList(response.body())
             }else {
@@ -137,7 +120,6 @@ class ChatDetailFragment : Fragment() {
 
     private fun setOnClickListeners(){
         binding.sendMessage.setOnClickListener{ view: View->
-            Log.e("Button", "Send message")
             val content = binding.messageContent.text.toString()
             if (content.isNotEmpty()){
                 webSocket.sendMessage(content)
@@ -145,7 +127,6 @@ class ChatDetailFragment : Fragment() {
             binding.messageContent.text.clear()
         }
         binding.sendNewMessage.setOnClickListener { view: View->
-            Log.e("Button", "Edit message")
             val content = binding.messageNewContent.text.toString()
             if (content.isNotEmpty()){
                 webSocket.editMessage(content, actionMessageId)
@@ -172,7 +153,7 @@ class ChatDetailFragment : Fragment() {
         fun resendMessage(message: Int){
             actionMessageId = message
             binding.resendChatsBlock.visibility = View.VISIBLE
-            vm.getUserChats()
+            viewModel.getUserChats()
         }
 
         fun editMessage(message: Message){

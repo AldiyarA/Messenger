@@ -7,9 +7,6 @@ import retrofit2.http.GET
 import retrofit2.http.Path
 
 interface ChatService {
-    @GET("chats/")
-    suspend fun getChats(): Response<List<Chat>>
-
     @GET("user/chats/")
     suspend fun getUserChats(): Response<List<Chat>>
 

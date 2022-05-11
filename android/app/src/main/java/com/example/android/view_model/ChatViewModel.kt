@@ -10,17 +10,9 @@ import kotlinx.coroutines.launch
 import retrofit2.Response
 
 class ChatViewModel(private val repository: ChatRepository): ViewModel() {
-    val chatsResponse: MutableLiveData<Response<List<Chat>>> = MutableLiveData()
     val userChatsResponse: MutableLiveData<Response<List<Chat>>> = MutableLiveData()
     val chatById: MutableLiveData<Response<Chat>> = MutableLiveData()
     val chatMessages: MutableLiveData<Response<List<Message>>> = MutableLiveData()
-
-    fun getChats(){
-        viewModelScope.launch {
-            val response = repository.getChats()
-            chatsResponse.value = response
-        }
-    }
 
     fun getUserChats(){
         viewModelScope.launch {

@@ -198,3 +198,177 @@ INFO -- 2022-05-05 16:02:55,295: EVENT{'type': 'to_user', 'chat_id': 1, 'data': 
 INFO -- 2022-05-05 16:02:55,296: user1
 INFO -- 2022-05-05 16:03:08,470: Disconnect 1
 INFO -- 2022-05-05 16:03:08,471: Disconnect 2
+INFO -- 2022-05-11 15:19:13,561: Connect 1
+INFO -- 2022-05-11 15:19:13,562: 1
+INFO -- 2022-05-11 15:19:13,563: Connect 2
+INFO -- 2022-05-11 15:19:13,563: Connect 3
+INFO -- 2022-05-11 15:19:13,624: Connect 4
+INFO -- 2022-05-11 15:19:13,672: Connect 5
+INFO -- 2022-05-11 15:19:13,673: Connect 6
+INFO -- 2022-05-11 15:19:19,925: Disconnect 1
+INFO -- 2022-05-11 15:19:19,926: Disconnect 2
+INFO -- 2022-05-12 00:08:01,602: Connect 1
+INFO -- 2022-05-12 00:08:01,603: 1
+INFO -- 2022-05-12 00:08:01,603: Connect 2
+INFO -- 2022-05-12 00:08:01,603: Connect 3
+INFO -- 2022-05-12 00:08:01,632: Connect 4
+INFO -- 2022-05-12 00:08:01,678: Connect 5
+INFO -- 2022-05-12 00:08:01,679: Connect 6
+INFO -- 2022-05-12 00:08:04,213: Disconnect 1
+INFO -- 2022-05-12 00:08:04,214: Disconnect 2
+INFO -- 2022-05-12 00:44:54,253: Connect 1
+INFO -- 2022-05-12 00:44:54,258: 1
+INFO -- 2022-05-12 00:44:54,259: Connect 2
+INFO -- 2022-05-12 00:44:54,260: Connect 3
+INFO -- 2022-05-12 00:44:54,315: Connect 4
+INFO -- 2022-05-12 00:44:54,369: Connect 5
+INFO -- 2022-05-12 00:44:54,373: Connect 6
+INFO -- 2022-05-12 00:44:54,584: Disconnect 1
+INFO -- 2022-05-12 00:44:54,585: Disconnect 2
+INFO -- 2022-05-12 00:49:22,317: Connect 1
+INFO -- 2022-05-12 00:49:22,320: 1
+INFO -- 2022-05-12 00:49:22,321: Connect 2
+INFO -- 2022-05-12 00:49:22,322: Connect 3
+INFO -- 2022-05-12 00:49:22,326: Connect 4
+INFO -- 2022-05-12 00:49:22,378: Connect 5
+INFO -- 2022-05-12 00:49:22,381: Connect 6
+INFO -- 2022-05-12 00:49:37,357: Disconnect 1
+INFO -- 2022-05-12 00:49:37,358: Disconnect 2
+INFO -- 2022-05-12 00:49:43,572: Connect 1
+INFO -- 2022-05-12 00:49:43,572: 1
+INFO -- 2022-05-12 00:49:43,573: Connect 2
+INFO -- 2022-05-12 00:49:43,573: Connect 3
+INFO -- 2022-05-12 00:49:43,574: Connect 4
+INFO -- 2022-05-12 00:49:43,615: Connect 5
+INFO -- 2022-05-12 00:49:43,616: Connect 6
+INFO -- 2022-05-12 00:56:36,989: Disconnect 1
+INFO -- 2022-05-12 00:56:36,997: Disconnect 2
+INFO -- 2022-05-12 00:56:49,396: Connect 1
+INFO -- 2022-05-12 00:56:49,398: 1
+INFO -- 2022-05-12 00:56:49,398: Connect 2
+INFO -- 2022-05-12 00:56:49,399: Connect 3
+INFO -- 2022-05-12 00:56:49,403: Connect 4
+INFO -- 2022-05-12 00:56:49,449: Connect 5
+INFO -- 2022-05-12 00:56:49,451: Connect 6
+INFO -- 2022-05-12 01:01:23,743: Disconnect 1
+INFO -- 2022-05-12 01:01:23,750: Disconnect 2
+INFO -- 2022-05-12 01:01:30,297: Connect 1
+INFO -- 2022-05-12 01:01:30,298: 1
+INFO -- 2022-05-12 01:01:30,299: Connect 2
+INFO -- 2022-05-12 01:01:30,299: Connect 3
+INFO -- 2022-05-12 01:01:30,305: Connect 4
+INFO -- 2022-05-12 01:01:30,361: Connect 5
+INFO -- 2022-05-12 01:01:30,363: Connect 6
+INFO -- 2022-05-12 01:03:20,521: Receive 1{'type': 'websocket.receive', 'text': '{"type": "send", "content": "Hi"}'}
+INFO -- 2022-05-12 01:03:20,524: Receive 2
+INFO -- 2022-05-12 01:03:20,537: ROOM Chat_1_1
+INFO -- 2022-05-12 01:03:20,594: New message{'id': 291, 'content': 'Hi', 'date': '2022-05-11T19:03:20.558320Z', 'creator': 1, 'sender': 1, 'chat': 1, 'message_type': 1}
+INFO -- 2022-05-12 01:03:20,610: res_data
+INFO -- 2022-05-12 01:03:20,719: Receive 4
+INFO -- 2022-05-12 01:03:20,720: EVENT{'type': 'to_user', 'chat_id': 1, 'data': {'id': 291, 'content': 'Hi', 'creator': {'id': 1, 'profile': {'first_name': 'Aldiyar', 'last_name': 'Adelov', 'image': '/media/images/AxDI.jpg'}}, 'sender': {'id': 1, 'profile': {'first_name': 'Aldiyar', 'last_name': 'Adelov', 'image': '/media/images/AxDI.jpg'}}, 'date': '2022-05-11T19:03:20.558320Z', 'chat': 1, 'message_type': 1}}
+INFO -- 2022-05-12 01:03:20,720: user1
+INFO -- 2022-05-12 01:03:58,781: Disconnect 1
+INFO -- 2022-05-12 01:03:58,789: Disconnect 2
+INFO -- 2022-05-12 01:04:04,296: Connect 1
+INFO -- 2022-05-12 01:04:04,297: 1
+INFO -- 2022-05-12 01:04:04,298: Connect 2
+INFO -- 2022-05-12 01:04:04,299: Connect 3
+INFO -- 2022-05-12 01:04:04,302: Connect 4
+INFO -- 2022-05-12 01:04:04,348: Connect 5
+INFO -- 2022-05-12 01:04:04,350: Connect 6
+INFO -- 2022-05-12 01:05:13,908: Disconnect 1
+INFO -- 2022-05-12 01:05:13,910: Disconnect 2
+INFO -- 2022-05-12 01:05:19,090: Connect 1
+INFO -- 2022-05-12 01:05:19,091: 1
+INFO -- 2022-05-12 01:05:19,092: Connect 2
+INFO -- 2022-05-12 01:05:19,092: Connect 3
+INFO -- 2022-05-12 01:05:19,096: Connect 4
+INFO -- 2022-05-12 01:05:19,240: Connect 5
+INFO -- 2022-05-12 01:05:19,241: Connect 6
+INFO -- 2022-05-12 01:28:09,252: Disconnect 1
+INFO -- 2022-05-12 01:28:09,257: Disconnect 2
+INFO -- 2022-05-12 01:28:15,942: Connect 1
+INFO -- 2022-05-12 01:28:15,943: 1
+INFO -- 2022-05-12 01:28:15,944: Connect 2
+INFO -- 2022-05-12 01:28:15,944: Connect 3
+INFO -- 2022-05-12 01:28:15,949: Connect 4
+INFO -- 2022-05-12 01:28:15,998: Connect 5
+INFO -- 2022-05-12 01:28:16,001: Connect 6
+INFO -- 2022-05-12 01:33:48,193: Disconnect 1
+INFO -- 2022-05-12 01:33:48,197: Disconnect 2
+INFO -- 2022-05-12 01:34:05,329: Connect 1
+INFO -- 2022-05-12 01:34:05,330: 1
+INFO -- 2022-05-12 01:34:05,330: Connect 2
+INFO -- 2022-05-12 01:34:05,330: Connect 3
+INFO -- 2022-05-12 01:34:05,331: Connect 4
+INFO -- 2022-05-12 01:34:05,386: Connect 5
+INFO -- 2022-05-12 01:34:05,389: Connect 6
+INFO -- 2022-05-12 01:34:08,444: Disconnect 1
+INFO -- 2022-05-12 01:34:08,444: Disconnect 2
+INFO -- 2022-05-12 01:34:13,533: Connect 1
+INFO -- 2022-05-12 01:34:13,534: 1
+INFO -- 2022-05-12 01:34:13,534: Connect 2
+INFO -- 2022-05-12 01:34:13,534: Connect 3
+INFO -- 2022-05-12 01:34:13,535: Connect 4
+INFO -- 2022-05-12 01:34:13,672: Connect 5
+INFO -- 2022-05-12 01:34:13,673: Connect 6
+INFO -- 2022-05-12 01:34:17,368: Disconnect 1
+INFO -- 2022-05-12 01:34:17,369: Disconnect 2
+INFO -- 2022-05-12 01:34:18,444: Connect 1
+INFO -- 2022-05-12 01:34:18,444: 1
+INFO -- 2022-05-12 01:34:18,444: Connect 2
+INFO -- 2022-05-12 01:34:18,445: Connect 3
+INFO -- 2022-05-12 01:37:22,649: Connect 1
+INFO -- 2022-05-12 01:37:22,649: 1
+INFO -- 2022-05-12 01:37:22,649: Connect 2
+INFO -- 2022-05-12 01:37:22,649: Connect 3
+INFO -- 2022-05-12 01:37:22,654: Connect 4
+INFO -- 2022-05-12 01:37:22,693: Connect 5
+INFO -- 2022-05-12 01:37:22,694: Connect 6
+INFO -- 2022-05-12 01:38:13,067: Disconnect 1
+INFO -- 2022-05-12 01:38:13,068: Disconnect 2
+INFO -- 2022-05-12 01:38:39,871: Connect 1
+INFO -- 2022-05-12 01:38:39,871: 1
+INFO -- 2022-05-12 01:38:39,880: Connect 2
+INFO -- 2022-05-12 01:38:39,880: Connect 3
+INFO -- 2022-05-12 01:38:39,881: Connect 4
+INFO -- 2022-05-12 01:38:39,930: Connect 5
+INFO -- 2022-05-12 01:38:39,931: Connect 6
+INFO -- 2022-05-12 01:39:05,618: Disconnect 1
+INFO -- 2022-05-12 01:39:05,629: Disconnect 2
+INFO -- 2022-05-12 01:39:12,650: Connect 1
+INFO -- 2022-05-12 01:39:12,651: 1
+INFO -- 2022-05-12 01:39:12,652: Connect 2
+INFO -- 2022-05-12 01:39:12,653: Connect 3
+INFO -- 2022-05-12 01:39:12,655: Connect 4
+INFO -- 2022-05-12 01:39:12,693: Connect 5
+INFO -- 2022-05-12 01:39:12,694: Connect 6
+INFO -- 2022-05-12 01:39:42,079: Disconnect 1
+INFO -- 2022-05-12 01:39:42,080: Disconnect 2
+INFO -- 2022-05-12 01:41:57,630: Connect 1
+INFO -- 2022-05-12 01:41:57,631: 1
+INFO -- 2022-05-12 01:41:57,632: Connect 2
+INFO -- 2022-05-12 01:41:57,633: Connect 3
+INFO -- 2022-05-12 01:41:57,634: Connect 4
+INFO -- 2022-05-12 01:41:57,700: Connect 5
+INFO -- 2022-05-12 01:41:57,701: Connect 6
+INFO -- 2022-05-12 01:41:59,901: Disconnect 1
+INFO -- 2022-05-12 01:41:59,902: Disconnect 2
+INFO -- 2022-05-12 01:44:58,177: Connect 1
+INFO -- 2022-05-12 01:44:58,178: 1
+INFO -- 2022-05-12 01:44:58,180: Connect 2
+INFO -- 2022-05-12 01:44:58,181: Connect 3
+INFO -- 2022-05-12 01:44:58,186: Connect 4
+INFO -- 2022-05-12 01:44:58,242: Connect 5
+INFO -- 2022-05-12 01:44:58,245: Connect 6
+INFO -- 2022-05-12 01:44:59,972: Disconnect 1
+INFO -- 2022-05-12 01:44:59,973: Disconnect 2
+INFO -- 2022-05-12 01:45:31,050: Connect 1
+INFO -- 2022-05-12 01:45:31,051: 1
+INFO -- 2022-05-12 01:45:31,052: Connect 2
+INFO -- 2022-05-12 01:45:31,053: Connect 3
+INFO -- 2022-05-12 01:45:31,056: Connect 4
+INFO -- 2022-05-12 01:45:31,112: Connect 5
+INFO -- 2022-05-12 01:45:31,114: Connect 6
+INFO -- 2022-05-12 01:46:16,212: Disconnect 1
+INFO -- 2022-05-12 01:46:16,213: Disconnect 2

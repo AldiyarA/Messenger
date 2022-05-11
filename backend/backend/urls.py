@@ -26,8 +26,8 @@ urlpatterns = [
     path('users/', include('user.urls')),
     path('core/', include('core.urls')),
     path('auth/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
-    path('refresh/', TokenRefreshView.as_view()),
-    path('verify/', TokenVerifyView.as_view())
+    path('auth/refresh/', TokenRefreshView.as_view()),
+    path('auth/verify/', TokenVerifyView.as_view())
 ]
 
 urlpatterns += static(settings.MEDIA_URL,

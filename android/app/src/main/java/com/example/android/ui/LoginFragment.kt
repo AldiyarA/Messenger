@@ -1,7 +1,6 @@
 package com.example.android.ui
 
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -32,8 +31,6 @@ class LoginFragment : Fragment() {
         db.get()
         observe()
 
-        Log.e("Button", binding.loginButton.text.toString())
-
         setOnClickListeners()
 
         return binding.root
@@ -45,7 +42,6 @@ class LoginFragment : Fragment() {
                 val authToken = response.body()
                 if (authToken != null) {
                     AppPreferences.accessToken = authToken.access
-//                    AppPreferences.refreshToken = authToken.refresh
                     db.insert(authToken.refresh!!)
                 }
                 findNavController().navigate(R.id.action_login_to_chat)
@@ -60,27 +56,21 @@ class LoginFragment : Fragment() {
             if (refreshTokenList.isEmpty()){
                 return@observe
             }
-            Log.e("Login fragment", "Found refresh")
             vm.refresh(refreshTokenList.first())
         }
         vm.refreshResponse.observe(viewLifecycleOwner) { response ->
-            Log.e("Login fragment", "New Access token")
-            Log.e("Login fragment", "Response $response")
             if (response.isSuccessful){
-                Log.e("Login fragment", "New Access token success")
                 val authToken = response.body()
                 if (authToken != null) {
                     AppPreferences.accessToken = authToken.access
                 }
                 findNavController().navigate(R.id.action_login_to_chat)
             }
-            Log.e("Login fragment", "New Access token request end")
         }
     }
 
     private fun login(){
         val credentials = getCredentials()
-        Log.e(LoginFragment::class.java.simpleName, "${credentials.email}, ${credentials.password}")
         vm.login(credentials)
     }
 
@@ -93,8 +83,8 @@ class LoginFragment : Fragment() {
 
     private fun getUserForm(): UserForm{
         val profile = Profile(
-            first_name = binding.firstNameInput.text.toString(),
-            last_name = binding.lastNameInput.text.toString(),
+            firstName = binding.firstNameInput.text.toString(),
+            lastName = binding.lastNameInput.text.toString(),
             bio = binding.bioInput.text.toString(),
             phone = binding.phoneInput.text.toString()
         )
@@ -128,21 +118,17 @@ class LoginFragment : Fragment() {
 
     private fun setOnClickListeners(){
         binding.loginButton.setOnClickListener { view: View->
-            Log.e("BUTTON CLICKED", "LOGIN")
             login()
         }
         binding.signupButton.setOnClickListener { view: View->
-            Log.e("BUTTON CLICKED", "SIGNUP")
             val userForm = getUserForm()
             vm.signup(userForm)
         }
         binding.toLoginButton.setOnClickListener { view: View->
-            Log.e("BUTTON CLICKED", "To Login Button")
             toLogin()
         }
 
         binding.toSignupButton.setOnClickListener { view: View->
-            Log.e("BUTTON CLICKED", "To Signup Button")
             toSignup()
         }
     }

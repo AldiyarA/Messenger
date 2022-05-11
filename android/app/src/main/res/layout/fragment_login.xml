@@ -32,7 +32,7 @@
 
                 android:text="@string/login"
                 android:textSize="40sp"
-                android:textColor="#000000"
+                android:textColor="@color/black"
                 android:textStyle="bold"
                 />
             <TextView
@@ -48,7 +48,7 @@
 
                 android:text="@string/sign_up"
                 android:textSize="40sp"
-                android:textColor="#000000"
+                android:textColor="@color/black"
                 android:textStyle="bold"
 
                 android:visibility="gone"
@@ -72,7 +72,7 @@
                 app:layout_constraintBottom_toTopOf="@id/email_input"
                 app:layout_constraintLeft_toLeftOf="@+id/email_input"
 
-                android:text="Email"
+                android:text="@string/email"
                 />
 
             <ImageView
@@ -101,7 +101,7 @@
                 android:paddingStart="35dp"
                 android:paddingBottom="10dp"
 
-                android:hint="Type your email"
+                android:hint="@string/type_your_email"
                 tools:ignore="RtlSymmetry" />
 
             <TextView
@@ -110,7 +110,7 @@
                 app:layout_constraintBottom_toTopOf="@id/password_input"
                 app:layout_constraintLeft_toLeftOf="@+id/password_input"
 
-                android:text="Password"
+                android:text="@string/password"
                 />
 
             <ImageView
@@ -140,7 +140,7 @@
                 android:paddingStart="35dp"
                 android:paddingBottom="10dp"
 
-                android:hint="Type your password"
+                android:hint="@string/type_your_password"
                 tools:ignore="RtlSymmetry" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
@@ -173,7 +173,7 @@
                 app:layout_constraintBottom_toTopOf="@id/first_name_input"
                 app:layout_constraintLeft_toLeftOf="@+id/first_name_input"
 
-                android:text="First name"
+                android:text="@string/first_name"
                 />
 
             <EditText
@@ -190,7 +190,7 @@
                 android:paddingStart="35dp"
                 android:paddingBottom="10dp"
 
-                android:hint="Type your first name"
+                android:hint="@string/type_your_first_name"
                 tools:ignore="RtlSymmetry" />
 
 
@@ -212,7 +212,7 @@
                 app:layout_constraintBottom_toTopOf="@id/last_name_input"
                 app:layout_constraintLeft_toLeftOf="@+id/last_name_input"
 
-                android:text="Last name"
+                android:text="@string/last_name"
                 />
 
             <EditText
@@ -229,7 +229,7 @@
                 android:paddingStart="35dp"
                 android:paddingBottom="10dp"
 
-                android:hint="Type your last name"
+                android:hint="@string/type_your_last_name"
                 tools:ignore="RtlSymmetry" />
 
 
@@ -251,7 +251,7 @@
                 app:layout_constraintBottom_toTopOf="@id/bio_input"
                 app:layout_constraintLeft_toLeftOf="@+id/bio_input"
 
-                android:text="Bio"
+                android:text="@string/bio"
                 />
 
 
@@ -269,7 +269,7 @@
                 android:paddingStart="35dp"
                 android:paddingBottom="10dp"
 
-                android:hint="Type your bio"
+                android:hint="@string/type_your_bio"
                 tools:ignore="RtlSymmetry" />
 
             <ImageView
@@ -290,7 +290,7 @@
                 app:layout_constraintBottom_toTopOf="@id/phone_input"
                 app:layout_constraintLeft_toLeftOf="@+id/phone_input"
 
-                android:text="Phone"
+                android:text="@string/phone"
                 />
 
             <EditText
@@ -307,7 +307,7 @@
                 android:paddingStart="35dp"
                 android:paddingBottom="10dp"
 
-                android:hint="Type your phone number"
+                android:hint="@string/type_your_phone_number"
                 tools:ignore="RtlSymmetry" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
@@ -373,7 +373,7 @@
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
 
-                android:text="Or using"
+                android:text="@string/or_using"
                 />
 
             <androidx.constraintlayout.widget.ConstraintLayout

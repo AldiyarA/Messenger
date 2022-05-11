@@ -1,6 +1,5 @@
 package com.example.android.websocket
 
-import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import com.beust.klaxon.Klaxon
 import com.example.android.globals.AppPreferences
@@ -30,28 +29,20 @@ class MessageWebSocket(private val chat: Int) {
             var reconnectTime = 0
             var maxReconnectTime = 5
             override fun onOpen(handshakedata: ServerHandshake?) {
-                Log.e("OPEN", "Finally did it")
-                Log.e("RECONNECTED ATTEMPT", "" + reconnectTime)
             }
 
             override fun onMessage(response: String?) {
                 cnt++
                 if (response != null) {
-                    Log.e("MESSAGE $cnt", response)
                     val data = Gson().fromJson(response, Message::class.java)
                     socketMessage.postValue(data)
-                    Log.e("DATA $cnt", data.content)
-                }else{
-                    Log.e("MESSAGE", "null message")
                 }
             }
 
             override fun onClose(code: Int, reason: String?, remote: Boolean) {
-                Log.e("CLOSE", "onClose")
             }
 
             override fun onError(ex: Exception?) {
-                Log.e("createWebSocketClient", "onError: ${ex?.message}")
             }
         }
         webSocketClient.connect()
@@ -62,7 +53,6 @@ class MessageWebSocket(private val chat: Int) {
         body["content"] = content
         this.webSocketClient.send(Klaxon().toJsonString(body))
 
-        Log.e("Socket parsed data", Klaxon().toJsonString(body))
     }
     fun resendMessage(message: Int, chat: Int){ // {"type": "resend", "message": 1, "chat": 2}
         val body = mutableMapOf<String, Any>()

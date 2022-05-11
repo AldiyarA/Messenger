@@ -45,16 +45,8 @@ class ChatAdapter(
         holder.chatName.text = chat.name
         if (chat.message != null){
             val message = chat.message
-            var content = ""
-            if (message.is_sender){
-                content += "You: "
-            }else if (message.sender.profile != null){
-                content += message.sender.profile!!.first_name + ": "
-            }
-            content += message.content
-            holder.message.text = content
-
-            holder.time.text = message.date.subSequence(11, 16)
+            holder.message.text = message.getOwnerContent()
+            holder.time.text = message.getTime()
         }
         holder.itemView.setOnClickListener {
             clickHandler(chat)

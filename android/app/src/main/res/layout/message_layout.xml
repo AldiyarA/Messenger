@@ -23,7 +23,6 @@
             android:id="@+id/initials"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="AA"
             android:gravity="center"
             android:textColor="@color/white"
             />
@@ -43,7 +42,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toEndOf="@+id/initialsBlock"
         android:layout_marginStart="5dp"
-        android:background="#eeeeee"
+        android:background="@color/white_e"
 
         android:layout_width="0dp"
         app:layout_constraintWidth_percent="0.6"
@@ -63,8 +62,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
 
-            android:text="Adelov Aldiyar"
-            android:textColor="#000000"
+            android:textColor="@color/black"
             android:textSize="14sp"
             />
         <TextView
@@ -75,8 +73,7 @@
 
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Forwarded from Aldiyar"
-            android:textColor="#0000bb"
+            android:textColor="@color/dark_blue"
             android:textSize="14sp"
 
             android:visibility="gone"
@@ -90,10 +87,9 @@
 
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColor="#000"
+            android:textColor="@color/black"
             android:textSize="12sp"
 
-            android:text="Тут вы можете увидеть мой дизайн для сообщения, конечно же сообщение которые принадлежат юзеру будут выделятся"
             />
 
         <TextView
@@ -104,7 +100,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
 
-            android:text="19:00"
             android:textSize="12sp"
             />
 

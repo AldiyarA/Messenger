@@ -1,7 +1,5 @@
 package com.example.android.view_model
 
-import android.util.Log
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -13,7 +11,6 @@ class DBViewModel(private val refreshDao: RefreshDao) : ViewModel(){
     val refreshToken: MutableLiveData<List<RefreshToken>> = MutableLiveData()
 
     fun get(){
-        Log.e("DBViewModel", "GET refresh")
         viewModelScope.launch {
             refreshToken.value = refreshDao.get()
         }

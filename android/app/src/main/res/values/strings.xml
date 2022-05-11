@@ -3,4 +3,25 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="login">Login</string>
     <string name="sign_up">Sign up</string>
+    <string name="no_message">No message</string>
+    <string name="chat">Chat</string>
+    <string name="write_a_massage">Write a massage...</string>
+    <string name="edit_message">Edit message</string>
+    <string name="new_massage">New massage...</string>
+    <string name="choose_chat_to_send_message">Choose chat to send message</string>
+    <string name="cancel">Cancel</string>
+    <string name="chats">Chats</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="type_your_email">Type your email</string>
+    <string name="first_name">First name</string>
+    <string name="type_your_first_name">Type your first name</string>
+    <string name="last_name">Last name</string>
+    <string name="type_your_last_name">Type your last name</string>
+    <string name="bio">Bio</string>
+    <string name="type_your_bio">Type your bio</string>
+    <string name="phone">Phone</string>
+    <string name="type_your_phone_number">Type your phone number</string>
+    <string name="or_using">Or using</string>
+    <string name="type_your_password">Type your password</string>
 </resources>

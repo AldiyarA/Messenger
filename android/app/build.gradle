@@ -80,7 +80,7 @@ dependencies {
     implementation 'androidx.preference:preference:1.2.0'
 
     // Material Design
-    implementation 'com.google.android.material:material:1.5.0'
+    implementation 'com.google.android.material:material:1.6.0'
 
     // Klaxon (lib to parse Json in kotlin)
     implementation 'com.beust:klaxon:5.5'
